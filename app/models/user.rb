@@ -65,21 +65,20 @@ class User < ActiveRecord::Base
 		step_ids = steps.pluck(:id)	
 		unless steps.nil?	
 			users.each do |user|
-				unless UserStep.exists?(user_id: user.id)
-					sorted_steps = steps.sort {|a,b| (a.day <=> b.day) == 0 ? a.hour <=> b.hour : a.day <=> b.day }																
-				else					
+				if UserStep.exists?(user_id: user.id)
 					sent_step_ids = UserStep.where(user_id: user.id).pluck(:step_id)
 					not_sent_step_ids = step_ids - sent_step_ids															
-					sort_steps = Step.find(not_sent_step_ids)
-					sorted_steps = sort_steps.sort {|a,b| (a.day <=> b.day) == 0 ? a.hour <=> b.hour : a.day <=> b.day }																													
-				end							
-				hour_time = ((Time.now - user.created_at)/3600).round															 	
-				if sorted_steps.any?
-					if (hour_time == (sorted_steps.first.day)*24 + sorted_steps.first.hour)
-						template = sorted_steps.first.template
-						UserMailer.daily_mail(user, template).deliver						
-						UserStep.create(user_id: user.id, step_id: sorted_steps.first.id)
-					end
+					steps = Step.find(not_sent_step_ids)
+				else
+					steps = Step.all																																																													
+				end	
+				sorted_steps = steps.sort {|a,b| (a.day <=> b.day) == 0 ? a.hour <=> b.hour : a.day <=> b.day }						
+				next_step = sorted_steps.first unless sorted_steps.blank?
+				hour_time = (Time.now - user.created_at)/60											 	
+				if (!next_step.nil? && (hour_time >= (next_step.day)*24 + next_step.hour))
+					template = next_step.template
+					UserMailer.daily_mail(user, template).deliver						
+					UserStep.create(user_id: user.id, step_id: next_step.id)					
 				end													
 			end	
 		end	   

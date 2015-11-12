@@ -9,7 +9,7 @@
 			<%= f.text_field :subject, class: 'form-control' %>
 
 			<%= f.label :body %>
-			<%= f.text_area :body %>
+			<%= f.text_area :body, rows: 9, placeholder: "Compose new body..." %>
 
 			<%= f.submit "Create template", class: "btn btn-primary" %>
 		<% end %>	
