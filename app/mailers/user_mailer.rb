@@ -1,12 +1,30 @@
-class UserMailer < ApplicationMailer
+class UserMailer < ActionMailer::Base
+
+default from: "hoandq@kaopiz.com"
 
   def account_activation(user)
     @user = user
-    mail to: user.email, subject: "Account activation"
+    message = "Account activation"    
+    delivery_options = { address: "gator3103.hostgator.com", port: 587, user_name: "hoandq@kaopiz.com", password: "abcd@1234", authentication: "plain" }
+    mail subject: message, to: [ " ", user.nil? ? nil : user.email ], delivery_method_options: delivery_options  
+  end
+
+  def sendmail
+    message = "send mail"
+    delivery_options = { address: "gator3103.hostgator.com", port: 587, user_name: "hoandq@kaopiz.com", password: "abcd@1234", authentication: "plain" }
+    mail subject: message, to: "quanghoan1992@gmail.com" , delivery_method_options: delivery_options  
   end
 
   def password_reset(user)
     @user = user
     mail to: user.email, subject: "Password reset"
+  end
+
+  def daily_mail(user, template)  
+    @user = user  
+    @template = template 
+    message = template.subject     
+    delivery_options = { address: "gator3103.hostgator.com", port: 587, user_name: "hoandq@kaopiz.com", password: "abcd@1234", authentication: "plain" }
+    mail subject: message, to: [ " ", user.nil? ? nil : user.email ], delivery_method_options: delivery_options  
   end
 end

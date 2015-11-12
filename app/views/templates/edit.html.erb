@@ -1,0 +1,20 @@
+<% provide(:title, 'Edit Template') %>
+<h1> Update Template </h1> 
+<%= link_to "Templates", templates_path %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@template) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :subject %>
+			<%= f.text_field :subject, class: 'form-control' %>
+
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+
+			<%= f.submit "Save", class: "btn btn-primary" %>
+		<% end %>	
+	</div>	
+</div>
+
+
+

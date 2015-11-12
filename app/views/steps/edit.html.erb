@@ -1,0 +1,20 @@
+<% provide(:title, 'Step edit') %>
+<h1> Edit Step </h1> 
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@step) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			
+			<%=f.label :Subject_of_template %>
+			<%= f.select :template_id, options_from_collection_for_select(@templates, 'id','subject')	%>
+
+			<%= f.label :hour %>
+			<%= f.text_area :hour , class: 'form-control' %>
+
+			<%= f.label :day  %>
+			<%= f.text_area :day , class: 'form-control' %>
+
+			<%= f.submit "Save", class: "btn btn-primary" %>
+		<% end %>	
+	</div>	
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029072048) do
+ActiveRecord::Schema.define(version: 20151109042225) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -34,6 +34,37 @@ ActiveRecord::Schema.define(version: 20151029072048) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "steps", force: :cascade do |t|
+    t.integer  "template_id"
+    t.integer  "hour"
+    t.integer  "day"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "steps", ["template_id"], name: "index_steps_on_template_id"
+
+  create_table "templates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "subject"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "templates", ["user_id", "created_at"], name: "index_templates_on_user_id_and_created_at"
+  add_index "templates", ["user_id"], name: "index_templates_on_user_id"
+
+  create_table "user_steps", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "step_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_steps", ["step_id"], name: "index_user_steps_on_step_id"
+  add_index "user_steps", ["user_id"], name: "index_user_steps_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,18 +1,25 @@
 User.create!(name:  "quang hoan",
-             email: "quanghoan1992@gmail.com",
+             email: "quanghoan@gmail.com",
              password:              "123456",
              password_confirmation: "123456",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "hoandq",
-             email: "hoandq@gmail.com",
-             password:              "123456",
-             password_confirmation: "123456",
-             admin: true,
-             activated: true,
-             activated_at: Time.zone.now)
+# User.create!(name:  "admin hoandq",
+#              email: "hoandq@gmail.com",
+#              password:              "123456",
+#              password_confirmation: "123456",
+#              admin: true,
+#              activated: true,
+#              activated_at: Time.zone.now)
+
+# User.create!(name:  "normal user",
+#              email: "hoan@gmail.com",
+#              password:              "123456",
+#              password_confirmation: "123456",
+#              activated: true,
+#              activated_at: Time.zone.now)
 
 # 30.times do |n|
 #   name  = Faker::Name.name

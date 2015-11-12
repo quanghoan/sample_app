@@ -1,0 +1,27 @@
+<% provide(:title, 'Template list') %>
+<h1> Template list</h1>	
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= link_to "New template", new_template_path, class: "btn btn-success" %>
+		<table border="1" style="width:100%">	
+		  <tr>
+		    <th>index</th>
+		    <th>user name</th>		
+		    <th>subject</th>
+		    <th>body</th>
+		    <th>actions</th>
+		  </tr>
+		  <% @templates.each.with_index(1) do |template, index| %>
+		  <tr>
+		    <td><%= "#{index}" %></td>   	
+		    <td><%= template.user.name %></td>
+		    <td><%= template.subject %></td>
+		    <td><%= template.body %></td>  
+		    <td><%= link_to "Edit", edit_template_path(template) %>
+		  			| <%= link_to "Delete", template, method: :delete, data: { confirm: "You sure?" } %>
+		  	</td> 
+		  </tr> 
+		  <% end %>
+		</table>
+	</div>
+</div>	
