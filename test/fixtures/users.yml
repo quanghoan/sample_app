@@ -27,6 +27,21 @@ mallory:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+hoan: 
+  name: quang hoan
+  email: hoan@gmail.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  admin: true
+
+hoan1:
+ name: hoan1
+ email: hoan1@gmail.com
+ password_digest: <%= User.digest('password') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
+
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>

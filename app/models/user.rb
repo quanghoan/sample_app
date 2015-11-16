@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :user_steps
 	has_many :steps, through: :user_steps
 	has_many :templates, dependent: :destroy
 	has_many :microposts, dependent: :destroy
@@ -74,7 +75,7 @@ class User < ActiveRecord::Base
 				end	
 				sorted_steps = steps.sort {|a,b| (a.day <=> b.day) == 0 ? a.hour <=> b.hour : a.day <=> b.day }						
 				next_step = sorted_steps.first unless sorted_steps.blank?
-				hour_time = (Time.now - user.created_at)/60											 	
+				hour_time = (Time.now - user.created_at)/3600											 	
 				if (!next_step.nil? && (hour_time >= (next_step.day)*24 + next_step.hour))
 					template = next_step.template
 					UserMailer.daily_mail(user, template).deliver						

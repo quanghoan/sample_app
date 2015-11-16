@@ -1,0 +1,23 @@
+<% provide(:title, 'Step ') %>
+<h1> Step</h1>	
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= link_to "New Step", new_step_path, class: "btn btn-success" %>
+		<table border="1" style="width:100%">	
+		  <tr>
+		    <th>subject</th>		
+		    <th>hour</th>
+		    <th>day</th>
+		    <th>actions</th>
+		  </tr>
+		  <tr>	
+		    <td><%= @step.template.subject %></td>
+		    <td><%= @step.hour %></td>
+		    <td><%= @step.day %></td>  
+		    <td><%= link_to "Edit", edit_step_path(@step) %>
+		  			| <%= link_to "Delete", @step, method: :delete, data: { confirm: "You sure?" } %>
+		  	</td> 
+		  </tr> 
+		</table>
+	</div>
+</div>	

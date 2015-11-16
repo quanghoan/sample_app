@@ -20,6 +20,7 @@
 		    <td><%= step.hour %></td>
 		    <td><%= step.day %></td>  
 		    <td><%= link_to "Edit", edit_step_path(step) %>
+		    		| <%= link_to "Show", step_path(step) %>
 		  			| <%= link_to "Delete", step, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
 		  </tr> 

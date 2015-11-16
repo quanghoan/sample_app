@@ -6,6 +6,10 @@ class StepsController < ApplicationController
 		@templates = Template.all
 	end
 
+	def show
+		@step = Step.find(params[:id])
+	end
+
 	def index
 		@steps = Step.all
 	end
@@ -26,7 +30,7 @@ class StepsController < ApplicationController
 		@step = Step.new(step_params)
 		if @step.save
 			flash[:success] = "step created successfully."
-			redirect_to steps_url
+			redirect_to @step
 		else
 			render 'new'
 		end
@@ -37,7 +41,7 @@ class StepsController < ApplicationController
 		@step = Step.find(params[:id])
 		if @step.update_attributes(step_params)
 			flash[:success] = "step updated successfully"
-			redirect_to steps_url
+			redirect_to @step
 		else
 			render 'edit'
 		end

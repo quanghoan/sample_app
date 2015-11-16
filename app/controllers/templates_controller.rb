@@ -5,6 +5,10 @@ class TemplatesController < ApplicationController
 		@template = Template.new
 	end
 
+	def show
+		@template = Template.find(params[:id])
+	end
+
 	def index
 		@templates = Template.all		
 	end
@@ -14,7 +18,7 @@ class TemplatesController < ApplicationController
 	end
 
 	def destroy
-    Template.find(params[:id]).destroy
+    Template.find(params[:id]).destroy  
     flash[:success] = "template deleted!"
     redirect_to templates_url
   end
@@ -32,8 +36,8 @@ class TemplatesController < ApplicationController
 	def update
     @template = Template.find(params[:id])
     if @template.update_attributes(template_params)
-      flash[:success] = "#{@template.subject} updated!"
-      redirect_to templates_path
+      flash[:success] = "a template updated!"
+      redirect_to @template
     else
       render 'edit'
     end

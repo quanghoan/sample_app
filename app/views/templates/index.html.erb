@@ -16,8 +16,10 @@
 		    <td><%= "#{index}" %></td>   	
 		    <td><%= template.user.name %></td>
 		    <td><%= template.subject %></td>
-		    <td><%= template.body %></td>  
+		    <td><%= template.body %></td> 
+		    
 		    <td><%= link_to "Edit", edit_template_path(template) %>
+		    		| <%= link_to "Show" , template_path(template) %>
 		  			| <%= link_to "Delete", template, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
 		  </tr> 

@@ -23,4 +23,13 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match user.reset_token,        mail.body.encoded
     assert_match CGI::escape(user.email), mail.body.encoded
   end
+
+  test "daily_mail" do 
+    user = users(:hoan1)
+    template = templates(:template)
+    mail = UserMailer.daily_mail(user, template)
+    assert_equal "subject", mail.subject
+    assert_equal [user.email], mail.to
+    assert_equal ["hoandq@kaopiz.com"], mail.from
+  end
 end
