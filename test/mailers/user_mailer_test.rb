@@ -28,7 +28,7 @@ class UserMailerTest < ActionMailer::TestCase
     user = users(:hoan1)
     template = templates(:template)
     mail = UserMailer.daily_mail(user, template)
-    assert_equal "subject", mail.subject
+    assert_equal template.subject, mail.subject
     assert_equal [user.email], mail.to
     assert_equal ["hoandq@kaopiz.com"], mail.from
   end

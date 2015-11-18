@@ -10,6 +10,6 @@ template:
  subject: "subject"
  body: "body"
 
-template1:
- subject: "subject1"
- body: "body1"
+# template1:
+#  subject: "subject1"
+#  body: "body1"

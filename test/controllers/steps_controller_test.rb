@@ -3,8 +3,8 @@ require 'test_helper'
 class StepsControllerTest < ActionController::TestCase
   
   def setup
-  	@step = steps(:step)
-  	@template = templates(:template)
+  	@step = FactoryGirl.create(:step)
+  	@template = FactoryGirl.create(:template)
   end
 
   test "should redirect create when not logged in " do 

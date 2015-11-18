@@ -27,7 +27,8 @@ class TemplateTest < ActiveSupport::TestCase
   end
 
   test "subject should be at most 50 characters" do
-  	@template.subject = "a" * 50
+  	@template.subject = "a" * 55
+    assert_not @template.valid?
   end
 
   test "body should be present" do 

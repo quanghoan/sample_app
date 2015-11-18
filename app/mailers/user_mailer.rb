@@ -16,7 +16,7 @@ default from: "hoandq@kaopiz.com"
   end
  
   def password_reset(user)
-    @user = user
+    @user = user 
     mail to: user.email, subject: "Password reset"
   end
 

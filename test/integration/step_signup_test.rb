@@ -4,6 +4,8 @@ class StepSignupTest < ActionDispatch::IntegrationTest
   
   def setup
     @template = templates(:template)  
+    @step = steps(:step)
+    @user = users(:hoan)
   end
 
   test "invalid signup step" do 
@@ -22,5 +24,14 @@ class StepSignupTest < ActionDispatch::IntegrationTest
   		post_via_redirect steps_path, step: {template_id: @template.id, hour: 3, day: 4}
   	end
   	assert_template 'steps/show'
+  end
+
+  test "delete step" do 
+    log_in_as(@user)
+    assert_difference 'Step.count', -1 do 
+      delete "/steps/#{@step.id}"
+    end
+    assert_redirected_to steps_path
+    follow_redirect!
   end
 end
