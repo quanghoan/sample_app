@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
 				hour_time = (Time.now - user.created_at)/3600											 	
 				if (!next_step.nil? && (hour_time >= (next_step.day)*24 + next_step.hour))
 					template = next_step.template
-					UserMailer.daily_mail(user, template).deliver						
+					UserMailer.daily_mail(user, template).deliver_now						
 					UserStep.create(user_id: user.id, step_id: next_step.id)					
 				end													
 			end	
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.send_mail
-		UserMailer.sendmail.deliver
+		UserMailer.sendmail.deliver_now
 	end
 
 	# Sets the password reset attribures.
@@ -128,6 +128,7 @@ class User < ActiveRecord::Base
 	def following?(other_user)
 		following.include?(other_user)
 	end
+
 	private
 
 	# Converts email to all lower-case.
