@@ -1,0 +1,26 @@
+<% provide(:title, 'log list') %>
+<h1> timeline</h1>	
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<table border="1" style="width:100%">	
+		  <tr>
+		    <th>index</th>
+		    <th>user name</th>		
+		    <th>time</th>
+		    <th>type</th>
+		    <th>message</th>
+		    <th>delete</th>
+		  </tr>
+		  <% @logtimes.each.with_index(1) do |logtime, index| %>	  		
+			  <tr>  
+			    <td><%= "#{index}" %></td>   	
+			    <td><%= link_to logtime.user.name, logtime.user %></td>
+			    <td><%= logtime.log_time %></td>
+			    <td><%= logtime.log_type %></td> 
+			    <td><%= logtime.log_message %></td>
+			    <td><%= link_to "Delete", logtime, method: :delete, data: { confirm: "You sure destroy this?" } %></td>
+			  </tr> 
+		  <% end %>
+		</table>
+	</div>
+</div>	

@@ -51,6 +51,7 @@ module SessionsHelper
 
 	#logs out the current user.
 	def log_out
+		LogTime.create(user_id: current_user.id, log_time: Time.now, log_type: "logout") unless current_user.admin?
 		forget(current_user)
 		session.delete(:user_id)
 		@current_user = nil

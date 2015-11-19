@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :log_times
 	has_many :user_steps
 	has_many :steps, through: :user_steps
 	has_many :templates, dependent: :destroy

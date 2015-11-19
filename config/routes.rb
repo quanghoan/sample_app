@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'log_times/index'
+
+  get 'time_log/index'
+
   root              'static_pages#home'
 
   get  'help'    => 'static_pages#help'
@@ -20,6 +24,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :templates
   resources :steps
+  resources :log_times, only: [:index, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
