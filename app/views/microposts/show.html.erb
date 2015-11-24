@@ -1,0 +1,14 @@
+<!-- <li id="micropost-<%= @micropost.id %>"> -->
+<%= link_to gravatar_for(@micropost.user, size: 60), @micropost.user %>
+<%= link_to @micropost.user.name, @micropost.user %>: 
+<%= @micropost.content %></br>
+<%= image_tag @micropost.picture.url if @micropost.picture? %></br>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
+  <% if current_user?(@micropost.user) %>
+    <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, @micropost, method: :delete, data: {confirm: "you sure?"} %>
+  <% end %>   
+</span>
+<!-- </li> -->
+<%= render 'comments/comment' %>
+<%= render 'comments/form' %>

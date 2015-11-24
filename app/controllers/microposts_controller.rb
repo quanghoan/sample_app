@@ -1,21 +1,28 @@
 class MicropostsController < ApplicationController
 	before_action :logged_in_user, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
+	
 	def create
 		@micropost = current_user.microposts.build(micropost_params)
 		if @micropost.save
 			flash[:success] = "Micropost created!"
 			redirect_to root_url
-			else
-				@feed_items = []
-				render 'static_pages/home'
+		else
+			@feed_items = []
+			render 'static_pages/home'
 		end
+	end
+
+	def show
+		@micropost = Micropost.find(params[:id])
+		@comments = @micropost.comments
+		@comment = @micropost.comments.build
 	end
 
 	def destroy
 		@micropost.destroy
 		flash[:success] = "Micropost deleted"
-		redirect_to request.referrer || root_url
+		redirect_to root_url
 	end
 
 	private

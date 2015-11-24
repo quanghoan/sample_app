@@ -1,0 +1,5 @@
+<%= form_for([@micropost, @micropost.comments.build]) do |f| %>
+  <div>
+    <%=f.text_field :content, placeholder: "add comment", style: "width:430px" %>
+  </div>   
+<% end %> 

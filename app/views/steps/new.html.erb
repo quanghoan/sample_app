@@ -7,7 +7,7 @@
 			<%= render 'shared/error_messages', object: f.object %>
 			
 			<%=f.label :Subject_of_template %>
-			<%= f.select :template_id, options_from_collection_for_select(@templates, 'id','subject')	%>
+			<%= f.select :template_id, options_from_collection_for_select(@templates, 'id','subject')	%> </br>
 
 			<%= f.label :hour %>
 			<%= f.text_area :hour , class: 'form-control' %>

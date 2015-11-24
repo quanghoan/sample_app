@@ -6,10 +6,10 @@
 		<%= form_for(@template) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			<%= f.label :subject %>
-			<%= f.text_field :subject, class: 'form-control' %>
+			<%= f.text_field :subject, class: 'form-control'%>
 
 			<%= f.label :body %>
-			<%= f.text_area :body, rows: 9, placeholder: "Compose new body..." %>
+			<%= f.text_area :body,  placeholder: "Compose new body..." %>
 
 			<%= f.submit "Create template", class: "btn btn-primary" %>
 		<% end %>	
