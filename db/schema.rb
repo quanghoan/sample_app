@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119081342) do
+ActiveRecord::Schema.define(version: 20151125044113) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20151119081342) do
 
   add_index "comments", ["micropost_id"], name: "index_comments_on_micropost_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "micropost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "likes", ["micropost_id"], name: "index_likes_on_micropost_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "log_times", force: :cascade do |t|
     t.datetime "log_time"
@@ -88,6 +98,17 @@ ActiveRecord::Schema.define(version: 20151119081342) do
   add_index "user_steps", ["step_id"], name: "index_user_steps_on_step_id"
   add_index "user_steps", ["user_id"], name: "index_user_steps_on_user_id"
 
+  create_table "userlikeposts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "userlikeposts", ["post_id"], name: "index_userlikeposts_on_post_id"
+  add_index "userlikeposts", ["user_id", "post_id"], name: "index_userlikeposts_on_user_id_and_post_id", unique: true
+  add_index "userlikeposts", ["user_id"], name: "index_userlikeposts_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -106,5 +127,20 @@ ActiveRecord::Schema.define(version: 20151119081342) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end

@@ -1,4 +1,6 @@
 class Micropost < ActiveRecord::Base
+  acts_as_votable
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :user
   default_scope -> {order(created_at: :desc)}

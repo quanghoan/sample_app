@@ -28,10 +28,10 @@
               Account <b class ="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to '<i class="glyphicon glyphicon-tree-deciduous">Profile</i> '.html_safe, current_user %></li>
-              <li><%= link_to '<i class="glyphicon glyphicon-cog">Setting</i> '.html_safe, edit_user_path(current_user) %></li>
+              <li><%= link_to 'Profile <i class="glyphicon glyphicon-tree-deciduous"></i> '.html_safe, current_user %></li>
+              <li><%= link_to 'Setting <i class="glyphicon glyphicon-cog"></i> '.html_safe, edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <li><%= link_to '<i class="glyphicon glyphicon-off">Log out</i> '.html_safe, logout_path, method: "delete" %></li>
+              <li><%= link_to 'Logout <i class="glyphicon glyphicon-off"></i> '.html_safe, logout_path, method: "delete" %></li>
             </ul>  
           </li>
         <% else %>

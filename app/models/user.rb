@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :comments, dependent: :destroy
+	acts_as_voter
+	has_many :likes, dependent: :destroy	
 	has_many :log_times
 	has_many :user_steps
 	has_many :steps, through: :user_steps
@@ -20,6 +21,10 @@ class User < ActiveRecord::Base
 										uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+	def has_like?(micropost)
+		likes.find_by_micropost_id(micropost.id)
+	end
 
 	# Returns the hash digest of the given string.
 	def User.digest(string)
@@ -130,6 +135,17 @@ class User < ActiveRecord::Base
 		following.include?(other_user)
 	end
 
+	def like(micropost)
+		active_relationships.create(micropost_id: micropost.id)
+	end
+
+	def unlike(micropost)
+		active_relationships.find_by(micropost_id: micropost.id).destroy
+	end
+
+	def linking?(micropost)
+		linking.include?(micropost)
+	end
 	private
 
 	# Converts email to all lower-case.

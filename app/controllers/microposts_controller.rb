@@ -25,6 +25,36 @@ class MicropostsController < ApplicationController
 		redirect_to root_url
 	end
 
+	def like
+		@micropost = Micropost.find(params[:id])
+		@micropost.liked_by current_user
+		respond_to do |format|
+			format.html {redirect_to :back }
+			format.js { render layout: false}
+		end	
+	end
+
+	def dislike
+		@micropost = Micropost.find(params[:id])
+		@micropost.dislike_by current_user
+		respond_to do |format|
+			format.html {redirect_to :back }
+			format.js { render layout: false}
+		end
+	end
+
+	# def upvote
+	# 	@micropost = Micropost.find(params[:id])
+	# 	@micropost.upvote_by current_user
+	# 	redirect_to :back
+	# end
+
+	# def downvote
+	# 	@micropost = Micropost.find(params[:id])
+	# 	@micropost.downvote_by current_user
+	# 	redirect_to :back
+	# end
+
 	private
 
 	def micropost_params
@@ -35,5 +65,4 @@ class MicropostsController < ApplicationController
 		@micropost = current_user.microposts.find_by(id: params[:id])
 		redirect_to root_url if @micropost.nil?
 	end
-
 end
