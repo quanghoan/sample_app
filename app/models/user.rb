@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	acts_as_voter
+	has_many :likeables, dependent: :destroy
+	has_many :liked_microposts, through: :likeables, source: :microposts
 	has_many :comments, dependent: :destroy
 	has_many :log_times
 	has_many :user_steps

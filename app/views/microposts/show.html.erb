@@ -1,4 +1,4 @@
-<!-- <li id="micropost-<%= @micropost.id %>"> -->
+<!-- <li id="micropost-<%= @micropost.id %>">  -->
 <%= link_to gravatar_for(@micropost.user, size: 60), @micropost.user %>
 <%= link_to @micropost.user.name, @micropost.user %>: 
 <%= @micropost.content %></br>
@@ -9,6 +9,28 @@
     <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, @micropost, method: :delete, data: {confirm: "you sure?"} %>
   <% end %>   
 </span>
-<!-- </li> -->
+<div id="like">	
+	<%=render 'likeables/like_button' %>
+</div>
+<div>
+	<div class="vote_count">
+		<%= @micropost.get_likes.size%>
+	</div>
+
+	<div class="votes">
+	<% if (current_user.liked? @micropost) %>
+		<%=link_to unlike_micropost_path(@micropost), method: :get, remote: true, class: 'unlike_post' do %> 
+			<span class="glyphicon glyphicon-chevron-down"> </span> 
+				Unlike
+	  <%end %>
+
+	<%else %>
+	  <%=link_to like_micropost_path(@micropost), method: :get, remote: true, class: 'like_post' do %> 
+	  	<span class="glyphicon glyphicon-chevron-up"> </span>
+	  		Like
+	  <%end %>
+	<% end %>		
+</div>
+<!-- </li>  -->
 <%= render 'comments/comment' %>
 <%= render 'comments/form' %>

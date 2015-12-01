@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'likeables/like'
+
+  get 'likeables/unlike'
+
   get 'comments/index'
 
   get 'comments/new'
@@ -24,8 +28,13 @@ Rails.application.routes.draw do
   end
 
   resources :microposts do 
-    resources :comments
+    resources :comments 
+    member do 
+      get 'like', to: "microposts#like"
+      get 'unlike', to: "microposts#unlike"
+    end
   end
+  resources :likeables, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
