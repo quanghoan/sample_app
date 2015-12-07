@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'messages/index'
+
+  get 'notifications/index'
+
   get 'likeables/like'
 
   get 'likeables/unlike'
@@ -41,6 +45,7 @@ Rails.application.routes.draw do
   resources :templates
   resources :steps
   resources :log_times, only: [:index, :destroy]
+  resources :notifications, only: [:index, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

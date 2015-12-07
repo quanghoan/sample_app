@@ -4,8 +4,8 @@ class LikeablesController < ApplicationController
     @likeable = Likeable.create(like_params)
   	@micropost = @likeable.micropost
   	respond_to do |format|
-      format.html {redirect_to :back} 
-      format.js
+      format.html {redirect_to :back } 
+      format.js 
     end  
   end
 

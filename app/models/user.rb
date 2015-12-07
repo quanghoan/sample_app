@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :notifications
 	acts_as_voter
 	has_many :likeables, dependent: :destroy
 	has_many :liked_microposts, through: :likeables, source: :microposts
