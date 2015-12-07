@@ -33,10 +33,10 @@
 </div>
 <!-- </li>  -->
 <div>
-	<div id="comment">
-		<%= render 'comments/comment' %>
+	<div id="comment-<%= @micropost.id%>">
+		<%= render partial: 'comments/comment', locals: {micropost: @micropost} %>
 	</div>	
-	<div id='comment-form'> 
-		<%= render 'comments/form' %>
+	<div id='comment-form-<%= @micropost.id%>'> 
+		<%= render partial: 'comments/form' , locals: { micropost: @micropost} %>
 	</div>
 </div>

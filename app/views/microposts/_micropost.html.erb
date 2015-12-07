@@ -5,7 +5,7 @@
   <span class="content">
   	<%= micropost.content %>
   	<%=link_to image_tag(micropost.picture.url), micropost if micropost.picture? %>
-  	</span>
+  </span>
   <span class="timestamp">
    Posted <%= time_ago_in_words(micropost.created_at) %> ago. 
     <% if current_user?(micropost.user)   %>
@@ -48,26 +48,17 @@
       </div>   
     </div>
   </span> 
-
-  <span>
-  <% micropost.comments.each do |comment| %>
-    <% unless comment.user.nil? %>
-      <li>
-        <%= link_to comment.user.name , comment.user %> commented <%= time_ago_in_words(comment.created_at) %> ago. 
-        <% if current_user?(comment.user) %>
-          <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, [micropost, comment],  method: :delete, data: {confirm: "you sure?"} %>
-        <% end %>
-      </li>
-      <%= comment.content %></br>
-    <% end %>  
-  <% end %>  
-  <%= form_for([micropost, micropost.comments.build]) do |f| %>
+  
   <div>
-    <%=f.text_field :content, placeholder: "add comment", style: "width:430px" %>
-  </div>   
-  <% end %> 
-  </span>
+    <div id="comment-<%= micropost.id %>">
+      <%= render partial: 'comments/comment', locals: {micropost: micropost} %>
+    </div>  
+    <div id="comment-form-<%= micropost.id %>"> 
+      <%= render partial: "comments/form", locals: {micropost: micropost} %>
+    </div>
+  </div>
 </li>
+
 
 
  
