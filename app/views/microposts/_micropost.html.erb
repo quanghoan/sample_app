@@ -1,5 +1,5 @@
 
-<li id="micropost-<%= micropost.id %>">
+<!-- <li id="micropost-<%= micropost.id %>">   -->
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">
@@ -8,25 +8,25 @@
   </span>
   <span class="timestamp">
    Posted <%= time_ago_in_words(micropost.created_at) %> ago. 
-    <% if current_user?(micropost.user)   %>
-      <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, micropost, method: :delete, data: {confirm: "you sure?"} %>
+    <% if current_user?(micropost.user) %>
+      <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, micropost, method: :delete, remote: true, data: {confirm: "you sure?"} %>
     <% end %>	
     | <%= link_to '<i class="glyphicon glyphicon-comment"></i>'.html_safe, micropost_path(micropost) %>
 
-    <div id="like">
-      <%= pluralize(micropost.likeables.count, "like" )%>
-      <% if likeable = current_user.likeables.find_by(micropost_id: micropost.id) %>
-        <%= form_for likeable, html: { method: :delete } do |f| %>
-          <%= f.submit "Unlike", style: "width:70px" %>      
-        <% end %>
-      <% else %>
-        <%= form_for current_user.likeables.build( micropost_id: micropost.id), method: :post do |f| %>
-          <%= f.hidden_field :micropost_id %>
-          <%= f.hidden_field :user_id %>
-          <%= f.submit "Like", style: "width:70px", class: "btn btn-primary" %>
-        <% end %>
-      <% end %>                
-    </div>
+    <!-- <div id="like">
+      <%# pluralize(micropost.likeables.count, "like" )%>
+      <%# if likeable = current_user.likeables.find_by(micropost_id: micropost.id) %>
+        <%# form_for likeable, html: { method: :delete } do |f| %>
+          <%# f.submit "Unlike", style: "width:70px" %>      
+        <%# end %>
+      <%# else %>
+        <%# form_for current_user.likeables.build( micropost_id: micropost.id), method: :post do |f| %>
+          <%# f.hidden_field :micropost_id %>
+          <%# f.hidden_field :user_id %>
+          <%# f.submit "Like", style: "width:70px", class: "btn btn-primary" %>
+        <%# end %>
+      <%# end %>                
+    </div> -->
 
     <div>
       <div class="vote_count">
@@ -50,14 +50,14 @@
   </span> 
   
   <div>
-    <div id="comment-<%= micropost.id %>">
+    <div id="comment_<%= micropost.id %>">
       <%= render partial: 'comments/comment', locals: {micropost: micropost} %>
     </div>  
-    <div id="comment-form-<%= micropost.id %>"> 
+    <div id="comment-form_<%= micropost.id %>"> 
       <%= render partial: "comments/form", locals: {micropost: micropost} %>
     </div>
   </div>
-</li>
+<!-- </li> -->
 
 
 

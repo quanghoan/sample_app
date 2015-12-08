@@ -24,13 +24,13 @@
 		  <% @notifications.each do |notification| %>	  		 
 				<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
 				  <tr> 			       	
-				    <td><%= link_to notification.user.name, notification.user %></td>
-				    <td><%= notification.comment.content %></td> 
+				    <td><%# link_to notification.user.name, notification.user %></td>
+				    <td><%# notification.comment.content %></td> 
 				    <td> 
    						commented <%= time_ago_in_words(notification.created_at) %> ago
    					</td>
-   					<td><%= link_to notification.micropost.content, notification.micropost %></td>
-				    <td><%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
+   					<td><%# link_to notification.micropost.content, notification.micropost %></td>
+				    <td><%# link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
 				    </td> 
 				  </tr>
 				<% end%>    

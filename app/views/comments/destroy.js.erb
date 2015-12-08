@@ -1,1 +1,1 @@
-$('#comment').html('<%= escape_javascript render 'comments/comment' %>');
+$("#comment_<%= @micropost.id %>").html('<%= escape_javascript render partial: 'comments/comment', locals: {micropost: @micropost} %>');

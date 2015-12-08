@@ -1,12 +1,14 @@
 class LikeablesController < ApplicationController
   
   def create 
-    @likeable = Likeable.create(like_params)
-  	@micropost = @likeable.micropost
-  	respond_to do |format|
-      format.html {redirect_to :back } 
-      format.js 
-    end  
+    @likeable = Likeable.find(params[:id])
+    @likeable.user_id = current_user.id
+    if @likeable.save
+      respond_to do |format|
+        format.html (redirect_to @micropost)
+        format.js
+      end
+    end
   end
 
   def destroy
@@ -14,7 +16,7 @@ class LikeablesController < ApplicationController
     @micropost = @likeable.micropost
     @likeable.destroy
     respond_to do |format|
-      format.html {redirect_to :back} 
+      format.html {redirect_to @micropost} 
       format.js
     end  
   end
