@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203070216) do
+ActiveRecord::Schema.define(version: 20151209091243) do
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +43,7 @@ ActiveRecord::Schema.define(version: 20151203070216) do
   end
 
   add_index "likeables", ["micropost_id"], name: "index_likeables_on_micropost_id"
+  add_index "likeables", ["user_id", "micropost_id"], name: "index_likeables_on_user_id_and_micropost_id", unique: true
   add_index "likeables", ["user_id"], name: "index_likeables_on_user_id"
 
   create_table "log_times", force: :cascade do |t|
@@ -131,6 +143,12 @@ ActiveRecord::Schema.define(version: 20151203070216) do
     t.datetime "reset_sent_at"
     t.datetime "login_at"
     t.datetime "logout_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "fullname"
+    t.string   "image"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -32,11 +32,12 @@
               <li><%= link_to '<i class="glyphicon glyphicon-tree-deciduous">Profile</i> '.html_safe, current_user %></li>
               <li><%= link_to '<i class="glyphicon glyphicon-cog">Setting</i> '.html_safe, edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <li><%= link_to '<i class="glyphicon glyphicon-off">Log out</i> '.html_safe, logout_path, method: "delete" %></li>
+              <li><%= link_to '<i class="glyphicon glyphicon-off">Log out</i> '.html_safe, logout_path, method: "delete", id: "sign_out" %></li>
             </ul>  
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
+          
         <% end %>
       </ul>
     </nav>

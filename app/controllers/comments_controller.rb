@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
 	def destroy
 		@micropost = Micropost.find(params[:micropost_id])
 		@comment.destroy
+		Notification.destroy(user_id: @comment.user_id, comment_id: @comment.id, micropost_id: @micropost.id) 			
 		respond_to do |format|
 			format.html do 
 				flash[:success] = "comment deleted"

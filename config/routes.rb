@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  # resources :authentications
 
+  # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
+  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
+  get 'auth/:provider/callback', to: 'sessions#createfb'
+  get 'auth/failure', to: redirect('/')  
+  get 'logout', to: 'sessions#destroyfb'
+  resources :sessions, only: [:create, :destroy]
   get 'messages/index'
 
   get 'notifications/index'
