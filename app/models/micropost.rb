@@ -1,4 +1,6 @@
 class Micropost < ActiveRecord::Base
+  has_many :likes
+  has_many :users, through: :likes
   has_many :comments, dependent: :destroy
   belongs_to :user
   default_scope -> {order(created_at: :desc)}

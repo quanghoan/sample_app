@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :likes
+	has_many :microposts, through: :likes
 	has_many :comments, dependent: :destroy
 	has_many :log_times
 	has_many :user_steps
