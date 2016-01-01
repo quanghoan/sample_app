@@ -4,20 +4,28 @@ class CommentsController < ApplicationController
 
 	def create
 		@micropost = Micropost.find(params[:micropost_id])		
-		@comment = @micropost.comments.create(comment_params)
+		@comment = @micropost.comments.build(comment_params)
 		@comment.user_id = current_user.id
-		if @comment.save	
-			redirect_to request.referrer || root_url
-	  else
-	  	flash[:danger] = "error! comment is not created yet."
-	  	redirect_to micropost_path(@micropost)
-	  end
+		if @comment.save
+			Notification.create(user_id: @comment.user_id, comment_id: @comment.id, micropost_id: @micropost.id) 			
+			respond_to do |format|
+				format.html { redirect_to request.referrer || root_url}	
+				format.js
+			end
+		end
 	end
 
 	def destroy
+		@micropost = Micropost.find(params[:micropost_id])
 		@comment.destroy
-		flash[:success] = "comment deleted"
-		redirect_to request.referrer || root_url
+		Notification.destroy(user_id: @comment.user_id, comment_id: @comment.id, micropost_id: @micropost.id) 			
+		respond_to do |format|
+			format.html do 
+				flash[:success] = "comment deleted"
+				redirect_to request.referrer || root_url
+			end
+			format.js
+		end
 	end
 
 	private

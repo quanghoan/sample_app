@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151126153618) do
+=======
+ActiveRecord::Schema.define(version: 20151209091243) do
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+>>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -24,15 +39,25 @@ ActiveRecord::Schema.define(version: 20151126153618) do
   add_index "comments", ["micropost_id"], name: "index_comments_on_micropost_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+<<<<<<< HEAD
   create_table "likes", force: :cascade do |t|
+=======
+  create_table "likeables", force: :cascade do |t|
+>>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
     t.integer  "user_id"
     t.integer  "micropost_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
+<<<<<<< HEAD
   add_index "likes", ["micropost_id"], name: "index_likes_on_micropost_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+=======
+  add_index "likeables", ["micropost_id"], name: "index_likeables_on_micropost_id"
+  add_index "likeables", ["user_id", "micropost_id"], name: "index_likeables_on_user_id_and_micropost_id", unique: true
+  add_index "likeables", ["user_id"], name: "index_likeables_on_user_id"
+>>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 
   create_table "log_times", force: :cascade do |t|
     t.datetime "log_time"
@@ -45,6 +70,12 @@ ActiveRecord::Schema.define(version: 20151126153618) do
 
   add_index "log_times", ["user_id"], name: "index_log_times_on_user_id"
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -55,6 +86,18 @@ ActiveRecord::Schema.define(version: 20151126153618) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "micropost_id"
+    t.integer  "comment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "notifications", ["comment_id"], name: "index_notifications_on_comment_id"
+  add_index "notifications", ["micropost_id"], name: "index_notifications_on_micropost_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -113,6 +156,12 @@ ActiveRecord::Schema.define(version: 20151126153618) do
     t.datetime "reset_sent_at"
     t.datetime "login_at"
     t.datetime "logout_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "fullname"
+    t.string   "image"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

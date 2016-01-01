@@ -1,0 +1,2 @@
+$("#comment_<%= @micropost.id %>").html('<%= escape_javascript render partial: 'comments/comment', locals: {micropost: @micropost} %>');
+$("#comment-form_<%= @micropost.id %>").html('<%= escape_javascript render partial: 'comments/form', locals: {micropost: @micropost} %>');

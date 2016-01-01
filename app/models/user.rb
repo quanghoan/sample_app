@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
 	has_many :likes
 	has_many :microposts, through: :likes
+=======
+	
+	has_many :notifications
+	acts_as_voter
+	has_many :likeables, dependent: :destroy
+	has_many :liked_microposts, through: :likeables, source: :microposts
+>>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 	has_many :comments, dependent: :destroy
 	has_many :log_times
 	has_many :user_steps
@@ -14,14 +22,26 @@ class User < ActiveRecord::Base
 	
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
+
 	before_create :create_activation_digest
 	validates :name,  presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, presence: true, length: { maximum: 255 },
-										format: { with: VALID_EMAIL_REGEX },
-										uniqueness: { case_sensitive: false }
+	validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def self.from_omniauth(auth)
+  	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.password = SecureRandom.urlsafe_base64      
+      user.save!
+    end
+  end
 
 	# Returns the hash digest of the given string.
 	def User.digest(string)

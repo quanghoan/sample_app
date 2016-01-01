@@ -1,0 +1,6 @@
+$('.unlike_post').bind('ajax:success', function(){
+   $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @micropost.votes_for.size.to_s %>');
+   $(this).closest('.unlike_post').hide();
+   $(this).closest('.votes').html(' <%= link_to "Like", like_micropost_path(@micropost), remote: true, method: :get, class: 'like_post' %>');
+
+});

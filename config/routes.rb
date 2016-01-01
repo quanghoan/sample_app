@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  # resources :authentications
+
+  # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
+  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
+  get 'auth/:provider/callback', to: 'sessions#createfb'
+  get 'auth/failure', to: redirect('/')  
+  get 'logout', to: 'sessions#destroyfb'
+  resources :sessions, only: [:create, :destroy]
+  get 'messages/index'
+
+  get 'notifications/index'
+
+  get 'likeables/like'
+
+  get 'likeables/unlike'
 
   get 'comments/index'
 
@@ -24,18 +40,27 @@ Rails.application.routes.draw do
   end
 
   resources :microposts do 
+<<<<<<< HEAD
     resources :comments
     member do 
       put "like", to: "microposts#like"
       put "dislike", to: "microposts#dislike"
+=======
+    resources :comments 
+    member do 
+      get 'like', to: "microposts#like"
+      get 'unlike', to: "microposts#unlike"
+>>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
     end
   end
+  resources :likeables, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :templates
   resources :steps
   resources :log_times, only: [:index, :destroy]
+  resources :notifications, only: [:index, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

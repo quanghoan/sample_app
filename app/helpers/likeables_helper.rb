@@ -1,0 +1,2 @@
+module LikeablesHelper
+end
