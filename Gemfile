@@ -17,13 +17,11 @@ gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
 gem 'acts_as_votable', '~> 0.10.0'
-<<<<<<< HEAD
-=======
+
 gem 'net-ssh'
 gem 'omniauth', '1.2.2'
 gem 'omniauth-facebook', '3.0.0'
 #gem  'i18n', '0.7.0'
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
   gem 'byebug',      '3.4.0'

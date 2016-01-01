@@ -40,17 +40,10 @@ Rails.application.routes.draw do
   end
 
   resources :microposts do 
-<<<<<<< HEAD
-    resources :comments
-    member do 
-      put "like", to: "microposts#like"
-      put "dislike", to: "microposts#dislike"
-=======
     resources :comments 
     member do 
       get 'like', to: "microposts#like"
       get 'unlike', to: "microposts#unlike"
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
     end
   end
   resources :likeables, only: [:create, :destroy]

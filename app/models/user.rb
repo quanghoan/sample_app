@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
+
 	has_many :likes
 	has_many :microposts, through: :likes
-=======
+
 	
 	has_many :notifications
 	acts_as_voter
 	has_many :likeables, dependent: :destroy
 	has_many :liked_microposts, through: :likeables, source: :microposts
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 	has_many :comments, dependent: :destroy
 	has_many :log_times
 	has_many :user_steps
