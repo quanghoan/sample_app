@@ -1,44 +1,47 @@
 <% provide(:title, 'message') %>
-<h1> notification </h1>	
-<div class="col-md-8 col-md-offset-2">
-	<% @notifications.each do |notification| %>
-		<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
-			<li>
-				<%= link_to notification.user.name, notification.user %>
-				say: <strong>"<%= notification.comment.content %>"</strong>
-				on <strong><%= link_to notification.micropost.content, notification.micropost %></strong>
-				<%= time_ago_in_words(notification.created_at) %> ago		
-				<%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
-			</li>	
-		<% end %>	
-	<% end %>
-</div>
+<h1> notifications </h1>	
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<% @notifications.each do |notification| %>	  		 
+				<% if notification.micropost.user.id == current_user.id %> 	
+					<li>	       	
+					  <%= link_to notification.user.name, notification.user %>
+					  say: <strong>"<%= notification.comment.content  %>"</strong>
+						 <%= time_ago_in_words(notification.created_at) %> ago
+	   				<%= link_to notification.micropost.content, notification.micropost %>
+					  <%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
+				   </li>	
+				<% end %>  
+		  <% end %>
+	</div>
+</div>  
 
 <!-- <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<table border="1" style="width:100%">	
 		  <tr>
-		    <th>commenter</th>	
+		    <th>commenter</th>
+		    <th>owner post</th>
 		    <th>comment</th>
 		    <th>time</th>
 		    <th>your post</th>
 		    <th>delete</th>
 		  </tr>
-		  <% @notifications.each do |notification| %>	  		 
-				<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
+		  <%# @notifications.each do |notification| %>	  		 
+				<%# if notification.micropost.user.id == current_user.id %>
 				  <tr> 			       	
 				    <td><%# link_to notification.user.name, notification.user %></td>
-				    <td><%# notification.comment.content %></td> 
+				    <td><%# notification.micropost.user.name%></td>
+				    <td><%# notification.comment.content  %></td> 
 				    <td> 
-   						commented <%= time_ago_in_words(notification.created_at) %> ago
+   						commented <%# time_ago_in_words(notification.created_at) %> ago
    					</td>
    					<td><%# link_to notification.micropost.content, notification.micropost %></td>
 				    <td><%# link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
 				    </td> 
 				  </tr>
-				<% end%>    
-		  <% end %>
+				<%# end %>  
+		  <%# end %>
 		</table>
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
 	</div>
-</div>
+</div>  -->
