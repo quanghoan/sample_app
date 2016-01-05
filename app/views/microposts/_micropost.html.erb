@@ -1,7 +1,8 @@
 
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  
   <span class="content">
+    <br><%= link_to micropost.user.name, micropost.user %></br>
   	<%= micropost.content %>
   	<%=link_to image_tag(micropost.picture.url), micropost if micropost.picture? %>
   </span>
@@ -19,12 +20,12 @@
 
       <div class="votes">
         <% if (current_user.liked? micropost) %>
-          <%=link_to unlike_micropost_path(micropost), method: :get, remote: true, class: 'unlike_post' do %> 
+          <%= link_to unlike_micropost_path(micropost), method: :get, remote: true, class: 'unlike_post' do %> 
             <span class="glyphicon glyphicon-chevron-down"> </span> 
               Unlike
           <%end %>
         <%else %>
-          <%=link_to like_micropost_path(micropost), method: :get, remote: true, class: 'like_post' do %> 
+          <%= link_to like_micropost_path(micropost), method: :get, remote: true, class: 'like_post' do %> 
             <span class="glyphicon glyphicon-chevron-up"> </span>
               Like
           <%end %>
