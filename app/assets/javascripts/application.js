@@ -14,9 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
-<<<<<<< HEAD
 
-=======
 //= require facebook
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
+
 //= require_tree .
