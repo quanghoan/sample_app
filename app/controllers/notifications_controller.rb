@@ -1,8 +1,9 @@
 class NotificationsController < ApplicationController
   before_action :logged_in_user
   def index
-  	@notifications = Notification.all
-  end
+  	 # @notifications = Notification.all
+  	@notifications = current_user.notifications
+  end   
 
   def destroy
   	Notification.find(params[:id]).destroy

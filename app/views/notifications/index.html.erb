@@ -1,40 +1,14 @@
 <% provide(:title, 'message') %>
 <h1> notification </h1>	
 <div class="col-md-8 col-md-offset-2">
-	<% @notifications.each do |notification| %>	  		 
-		<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
-			<li>
-				<%= link_to notification.user.name, notification.user %> commented on your <%= link_to "status", notification.micropost %> <%= time_ago_in_words(notification.created_at) %> ago
-				<%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
-			</li>
+	<div>
+		<% @notifications.each do |notification| %>	  		 
+			<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
+				<li>
+					<%= link_to notification.user.name, notification.user %> commented on your <%= link_to "status", notification.micropost %> <%= time_ago_in_words(notification.created_at) %> ago
+					<%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
+				</li>
+			<%end%>	
 		<%end%>	
-	<%end%>	
-</div>
-
-<!-- <div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		<table border="1" style="width:100%">	
-		  <tr>
-		    <th>commenter</th>	
-		    <th>comment</th>
-		    <th>time</th>
-		    <th>your post</th>
-		    <th>delete</th>
-		  </tr>
-		  <% @notifications.each do |notification| %>	  		 
-				<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
-				  <tr> 			       	
-				    <td><%# link_to notification.user.name, notification.user %></td>
-				    <td><%# notification.comment.content %></td> 
-				    <td> 
-   						commented <%= time_ago_in_words(notification.created_at) %> ago
-   					</td>
-   					<td><%# link_to notification.micropost.content, notification.micropost %></td>
-				    <td><%# link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
-				    </td> 
-				  </tr>
-				<% end%>    
-		  <% end %>
-		</table>
 	</div>
-</div>	 -->
+</div>

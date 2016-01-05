@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 
-=======
-<!-- <li id="micropost-<%= @micropost.id %>">   -->
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
 <%= link_to gravatar_for(@micropost.user, size: 60), @micropost.user %>
 <%= link_to @micropost.user.name, @micropost.user %>: 
 <%= @micropost.content %></br>
-<%=link_to image_tag(@micropost.picture.url)if @micropost.picture? %></br>
+<%= link_to image_tag(@micropost.picture.url)if @micropost.picture? %></br>
 <span class="timestamp">
   Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
   <% if current_user?(@micropost.user) %>
@@ -14,13 +10,6 @@
   <% end %>
 
 </span>
-<<<<<<< HEAD
-<%= render 'comments/comment' %>
-<%= render 'comments/form' %>
-=======
-<!-- <div id="like">	
-	<%#render 'likeables/like_button' %>
-</div> -->
 
 <div>
 	<div class="vote_count">
@@ -50,4 +39,4 @@
 		<%= render partial: 'comments/form' , locals: { micropost: @micropost} %>
 	</div>
 </div>
->>>>>>> 7ef753d747f4773988a872c1481ff23bf3647490
+
