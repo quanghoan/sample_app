@@ -1,17 +1,6 @@
 <% provide(:title, 'message') %>
 <h1> notification </h1>	
 <div class="col-md-8 col-md-offset-2">
-<<<<<<< HEAD
-	<div>
-		<% @notifications.each do |notification| %>	  		 
-			<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
-				<li>
-					<%= link_to notification.user.name, notification.user %> commented on your <%= link_to "status", notification.micropost %> <%= time_ago_in_words(notification.created_at) %> ago
-					<%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
-				</li>
-			<%end%>	
-		<%end%>	
-=======
 	<% @notifications.each do |notification| %>
 		<% if ((notification.user_id != current_user.id) && (current_user.id == notification.micropost.user.id)) %>
 			<li>

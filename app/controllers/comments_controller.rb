@@ -15,13 +15,8 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-<<<<<<< HEAD
-		@micropost = Micropost.find(params[:micropost_id])
-		@comment = Comment.find(params[:id])
-=======
 		@micropost = Micropost.find(params[:micropost_id])	
 		@comment = @micropost.comments.find(params[:id])
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
 		@comment.destroy
 		respond_to do |format|
 			format.html do 

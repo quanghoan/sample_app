@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-<span>
-	<% micropost.comments.each do |comment| %>
-		<% unless comment.user.nil? %>
-			<li>
-			<%=link_to comment.user.name , comment.user %> commented <%= time_ago_in_words(comment.created_at) %> ago. 
-			<% if current_user?(comment.user) %>
-				<%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, [micropost, comment],  method: :delete, remote: true, data: {confirm: "you sure?"} %>
-			<% end %></li>
-			<%= comment.content %></br>
-		<% end %>  
-	<% end %>  
-=======
+
+
 <span >
   <% micropost.comments.each do |comment| %>
     <% unless comment.user.nil? %>
@@ -22,5 +11,4 @@
       <%= comment.content %></br>
     <% end %>  
   <% end %>  
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
 </span>

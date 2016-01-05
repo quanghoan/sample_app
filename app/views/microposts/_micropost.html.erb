@@ -1,30 +1,16 @@
-<<<<<<< HEAD
-<!-- <li id="micropost-<%= micropost.id %>">   -->
-=======
 
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>  
   <span class="content">
-<<<<<<< HEAD
-    <%= micropost.content %>
-    <%=link_to image_tag(micropost.picture.url), micropost if micropost.picture? %>
-=======
     <br><%= link_to micropost.user.name, micropost.user %></br>
   	<%= micropost.content %>
   	<%=link_to image_tag(micropost.picture.url), micropost if micropost.picture? %>
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
   </span>
   <span class="timestamp">
    Posted <%= time_ago_in_words(micropost.created_at) %> ago. 
     <% if current_user?(micropost.user) %>
-<<<<<<< HEAD
-      <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, micropost, method: :delete, remote: true, data: {confirm: "you sure?"} %>
-    <% end %> 
-=======
       <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, micropost, method: :delete, data: {confirm: "you sure?"} %>
     <% end %>	
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
+
     | <%= link_to '<i class="glyphicon glyphicon-comment"></i>'.html_safe, micropost_path(micropost) %>
 
     <div>
@@ -56,11 +42,3 @@
       <%= render partial: "comments/form", locals: {micropost: micropost} %>
     </div>
   </div>
-<<<<<<< HEAD
-<!-- </li> -->
-=======
-
-
-
- 
->>>>>>> 21ea5f4fba99a5419c12d2acc5c782a1d290e0c5
