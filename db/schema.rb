@@ -56,12 +56,6 @@ ActiveRecord::Schema.define(version: 20151208094517) do
 
   add_index "log_times", ["user_id"], name: "index_log_times_on_user_id"
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"

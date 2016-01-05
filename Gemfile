@@ -21,6 +21,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'net-ssh'
 gem 'omniauth', '1.2.2'
 gem 'omniauth-facebook', '3.0.0'
+gem "figaro"
 #gem  'i18n', '0.7.0'
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
