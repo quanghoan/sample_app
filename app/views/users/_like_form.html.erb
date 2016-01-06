@@ -1,9 +1,0 @@
-<% unless current_user?(@user) %>
-	<div> 
-		<% if current_user.liking?(@user) %>
-			<%= render 'unlike' %>
-		<% else %>
-			<%= render 'like' %>
-		<% end %>		
-	</div>
-<% end %>	

@@ -25,12 +25,12 @@ class MicropostsController < ApplicationController
 		redirect_to root_url
 	end
 
-	def like
+	def like  
 		@micropost = Micropost.find(params[:id])
 		@micropost.liked_by current_user
 		respond_to do |format|
-			format.html {redirect_to :back}
-			format.js {render layout: false}
+			format.html 
+			format.js 
 		end		
 	end
 
@@ -38,8 +38,8 @@ class MicropostsController < ApplicationController
 		@micropost = Micropost.find(params[:id])
 		@micropost.unliked_by current_user
 		respond_to do |format|
-			format.html {redirect_to :back}
-			format.js {render layout: false}
+			format.html
+			format.js 
 		end	
 	end
 

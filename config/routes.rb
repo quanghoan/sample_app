@@ -12,10 +12,6 @@ Rails.application.routes.draw do
 
   get 'notifications/index'
 
-  get 'likeables/like'
-
-  get 'likeables/unlike'
-
   get 'comments/index'
 
   get 'comments/new'

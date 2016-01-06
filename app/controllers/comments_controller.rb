@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			Notification.create(user_id: @comment.user_id, comment_id: @comment.id, micropost_id: @micropost.id) 			
 			respond_to do |format|
-				format.html { redirect_to request.referrer || root_url}	
+				format.html 
 				format.js
 			end
 		end
