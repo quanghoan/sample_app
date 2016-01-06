@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         redirect_to root_url
       end
     else
-      LogTime.create(user_id: user.id, log_time: Time.now, log_type: "login", log_message: "fail") unless user.admin?
+      LogTime.create(user_id: user.id, log_time: Time.now, log_type: "login", log_message: "fail") unless user.nil?
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'      
     end

@@ -1,17 +1,15 @@
-<!-- <li id="micropost-<%= @micropost.id %>">   -->
+
 <%= link_to gravatar_for(@micropost.user, size: 60), @micropost.user %>
 <%= link_to @micropost.user.name, @micropost.user %>: 
 <%= @micropost.content %></br>
-<%=link_to image_tag(@micropost.picture.url)if @micropost.picture? %></br>
+<%= link_to image_tag(@micropost.picture.url)if @micropost.picture? %></br>
 <span class="timestamp">
   Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
   <% if current_user?(@micropost.user) %>
     <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, @micropost, method: :delete, data: {confirm: "you sure?"} %>
-  <% end %>   
+  <% end %>
+
 </span>
-<!-- <div id="like">	
-	<%#render 'likeables/like_button' %>
-</div> -->
 
 <div>
 	<div class="vote_count">
@@ -41,3 +39,4 @@
 		<%= render partial: 'comments/form' , locals: { micropost: @micropost} %>
 	</div>
 </div>
+

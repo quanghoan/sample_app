@@ -1,6 +1,5 @@
 
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>  
   <span class="content">
     <br><%= link_to micropost.user.name, micropost.user %></br>
   	<%= micropost.content %>
@@ -11,6 +10,7 @@
     <% if current_user?(micropost.user) %>
       <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, micropost, method: :delete, data: {confirm: "you sure?"} %>
     <% end %>	
+
     | <%= link_to '<i class="glyphicon glyphicon-comment"></i>'.html_safe, micropost_path(micropost) %>
 
     <div>
@@ -42,7 +42,3 @@
       <%= render partial: "comments/form", locals: {micropost: micropost} %>
     </div>
   </div>
-
-
-
- 

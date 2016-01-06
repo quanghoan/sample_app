@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-	
+
+	has_many :likes
+	has_many :microposts, through: :likes
 	has_many :notifications
 	acts_as_voter
 	has_many :likeables, dependent: :destroy
