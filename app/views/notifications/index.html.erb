@@ -8,8 +8,8 @@
 					  <%= link_to notification.user.name, notification.user %>
 					  say: <strong>"<%= notification.comment.content  %>"</strong>
 						 <%= time_ago_in_words(notification.created_at) %> ago
-	   				<%= link_to notification.micropost.content, notification.micropost %>
-					  <%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
+	   				|  <%= link_to "View", notification.micropost %>
+					  |  <%= link_to "Delete", notification, method: :delete, data: { confirm: "You sure destroy this?" } %>
 				   </li>	
 				<% end %>  
 		  <% end %>
