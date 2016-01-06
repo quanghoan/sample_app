@@ -15,4 +15,9 @@
 //= require bootstrap
 //= require turbolinks
 
+<<<<<<< HEAD
+=======
+//= require facebook
+
+>>>>>>> 958c324beb917a98af29ac9d67db488aac208a67
 //= require_tree .
