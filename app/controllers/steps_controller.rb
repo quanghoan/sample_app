@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
 	before_action :admin_user
-	
+	before_action :logged_in_user
 	def new
 		@step = Step.new
 		@templates = Template.all
