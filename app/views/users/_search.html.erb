@@ -1,0 +1,4 @@
+<%= form_tag users_path,  method: :get do %>
+	<%= text_field_tag :search, params[:search],style: "width:400px",placeholder: "Search name..." %>
+	<%= submit_tag "Search", class: "btn btn-info", style: "width:80px"%>
+<% end %>

@@ -4,4 +4,5 @@
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe, user, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
+  <%= render partial: 'follow_form', locals: {user: user} %>
 </li>
