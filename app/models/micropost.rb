@@ -15,14 +15,14 @@ class Micropost < ActiveRecord::Base
   validates :user_id, presence: true
   validates :content, presence: true, length: {maximum: 140}
   validate :picture_size
-  acts_as_votable
-  def like(micropost)
-    likeables.created(user_id: current_user.id, micropost_id: micropost.id)
-  end
 
-  def unlike(micropost)
-    likeables.find_by(user_id: current_user.id, micropost_id: micropost.id).destroy
-  end
+  # def like(micropost)
+  #   likeables.created(user_id: current_user.id, micropost_id: micropost.id)
+  # end
+
+  # def unlike(micropost)
+  #   likeables.find_by(user_id: current_user.id, micropost_id: micropost.id).destroy
+  # end
 
   private
 

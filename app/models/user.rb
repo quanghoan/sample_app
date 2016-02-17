@@ -105,8 +105,8 @@ class User < ActiveRecord::Base
 		end	   
 	end
 
-	def self.send_mail
-		UserMailer.sendmail.deliver_now
+	def send_mail
+		UserMailer.sendmail(self).deliver_now
 	end
 
 	# Sets the password reset attribures.

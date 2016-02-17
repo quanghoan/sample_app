@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # resources :authentications
 
   # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]

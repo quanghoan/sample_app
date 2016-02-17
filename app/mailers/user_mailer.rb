@@ -9,7 +9,8 @@ default from: "hoandq@kaopiz.com"
     mail subject: message, to: [ " ", user.nil? ? nil : user.email ], delivery_method_options: delivery_options  
   end
 
-  def sendmail
+  def sendmail(user)
+    @user = user
     message = "send mail"
     delivery_options = { address: "gator3103.hostgator.com", port: 587, user_name: "hoandq@kaopiz.com", password: "abcd@1234", authentication: "plain" }
     mail subject: message, to: "quanghoan1992@gmail.com" , delivery_method_options: delivery_options  
