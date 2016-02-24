@@ -20,7 +20,10 @@ User.create!(name:  "normal user",
              password_confirmation: "123456",
              activated: true,
              activated_at: Time.zone.now)
-
+users = User.all
+user  = users.first
+following = users[2..100]
+followers = users[3..40]
 # 30.times do |n|
 #   name  = Faker::Name.name
 #   email = "example-#{n+1}@railstutorial.org"
