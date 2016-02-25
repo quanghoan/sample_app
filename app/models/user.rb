@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
 
-	has_many :likes
+	has_many :likes, dependent: :destroy
 	has_many :microposts, through: :likes
 	has_many :notifications
 	acts_as_voter
 	has_many :comments, dependent: :destroy
-	has_many :log_times
-	has_many :user_steps
+	has_many :log_times, dependent: :destroy
+	has_many :user_steps, dependent: :destroy
 	has_many :steps, through: :user_steps
 	has_many :templates, dependent: :destroy
 	has_many :microposts, dependent: :destroy
