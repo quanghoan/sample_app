@@ -1,6 +1,6 @@
 class LogTimesController < ApplicationController
   before_action :admin_user
-	before_action :logged_in_user
+	# before_action :logged_in_user
   def index
   	@logtimes = LogTime.all
   end

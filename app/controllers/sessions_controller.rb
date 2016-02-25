@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
       # if user.activated?
       log_in user
       LogTime.create(user_id: user.id, log_time: Time.now, log_type: "login", log_message: "success") unless user.admin?
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or user        
+      # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      redirect_to user      
       # else
       #   message  = "Account not activated. "
       #   message += "Check your email for the activation link."

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+  # before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers, :create]
 	before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       # @user.send_activation_email
       flash[:info] = "bạn thật đz và đáng iu."
       redirect_to root_url
