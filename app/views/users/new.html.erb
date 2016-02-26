@@ -18,6 +18,10 @@
 			<%= f.password_field :password_confirmation %>
 
 			<%= f.submit "Creat my account", class: "btn btn-primary" %>
-		<% end %>	
+		<% end %><br>	
+
+		<div id="user-widget">
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %>
+    </div> 
 	</div>	
 </div>

@@ -81,29 +81,53 @@ p {
 
 /* footer */
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
+.page-secction{
+  margin-top: 50px;
+  width: 100%;
+  min-height: 100px;
+  text-align: center;
 }
+.footer-page{
+  padding: 3.5em 0 0em;
+  background-color: white;
+  display: inline-block;
+}
+.footer-page ul{
+  list-style: none;
+  margin: 0 auto;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+.footer-page ul .icon{
+  width: 48px;
+  height: 48px;
+  float: left;
+  margin: 0 1em;
+
+}
+.footer-page ul .icon.facebook{
+  background-image: asset_url('facebook-black.png');
+  transition: all 0.7s ease;
+}
+.footer-page ul .icon.facebook:hover{
+  background-image: asset_url('facebook-full-color.png');
+}
+
+.footer-page ul .icon.googleplus{
+  background-image: asset_url('googleplus-black.png');
+  transition: all 0.7s ease;
+}
+.footer-page ul .icon.googleplus:hover{
+  background-image: asset_url('googleplus-full-color.png');
+}
+.footer-page ul .icon.youtube{
+  background-image: asset_url('youtube-black.png');
+  transition: all 0.7s ease;
+}
+.footer-page ul .icon.youtube:hover{
+  background-image: asset_url('youtube-full-color.png');
+}
+
 
 /*miscellaneous*/
 .debug_dump {
@@ -313,3 +337,9 @@ input {
     width: 40%;
   }
 }
+#coffee{
+  /*margin-top: 10px;*/
+  background: asset_url('bg-1.jpg');
+  height: 600px;
+}
+
