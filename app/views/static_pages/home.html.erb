@@ -24,11 +24,9 @@
   </div>
 <% else %>
   <div id="coffee" class="center jumbotron">
-    <h2>
-      <p id="introduction"><marquee>This website is designed for sharing our ideas to the world</p></marquee>
+    <h2><p id="introduction"><marquee>This website is designed for sharing our ideas to the world</p></marquee>
+      <p><%= link_to "Sign up now!", signup_path,  class: "btn btn-lg btn-primary signup" %></p>
     </h2>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     <%# link_to "Social Accounts", authentications_path %>
   </div>
 <% end %>
