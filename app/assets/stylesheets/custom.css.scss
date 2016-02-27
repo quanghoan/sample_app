@@ -82,10 +82,11 @@ p {
 /* footer */
 
 .page-secction{
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   width: 100%;
   min-height: 100px;
   text-align: center;
+
 }
 .footer-page{
   padding: 3.5em 0 0em;
@@ -107,7 +108,7 @@ p {
 }
 .footer-page ul .icon.facebook{
   background-image: asset_url('facebook-black.png');
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
 }
 .footer-page ul .icon.facebook:hover{
   background-image: asset_url('facebook-full-color.png');
@@ -115,14 +116,14 @@ p {
 
 .footer-page ul .icon.googleplus{
   background-image: asset_url('googleplus-black.png');
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
 }
 .footer-page ul .icon.googleplus:hover{
   background-image: asset_url('googleplus-full-color.png');
 }
 .footer-page ul .icon.youtube{
   background-image: asset_url('youtube-black.png');
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
 }
 .footer-page ul .icon.youtube:hover{
   background-image: asset_url('youtube-full-color.png');
@@ -338,7 +339,6 @@ input {
   }
 }
 #coffee{
-  /*margin-top: 10px;*/
   background: asset_url('bg-1.jpg');
   height: 600px;
 }
@@ -348,4 +348,10 @@ input {
 }
 .signup:hover {
   background-color: #606060 ;
+}
+
+#login_background{
+  background: asset_url('bg-coffee-1.jpg');
+  height: 600px;
+  color: #303030 ;
 }
